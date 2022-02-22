@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/expense-checker/static/css/main.b748c50f.css",
+    "main.js": "/expense-checker/static/js/main.851493ef.js",
+    "index.html": "/expense-checker/index.html",
+    "main.b748c50f.css.map": "/expense-checker/static/css/main.b748c50f.css.map",
+    "main.851493ef.js.map": "/expense-checker/static/js/main.851493ef.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b748c50f.css",
+    "static/js/main.851493ef.js"
+  ]
+}
