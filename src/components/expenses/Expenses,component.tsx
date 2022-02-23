@@ -3,6 +3,7 @@ import { ChangeEventHandler, FC, useState } from "react";
 import ExpenseFilter from "./expense-filter/ExpenseFilter.component";
 import ExpenseList from "./expense-list/ExpenseList.component";
 import { Expense } from "../../types";
+import Chart from "../chart/Chart.component";
 
 interface ExpensesProps {
   expenses: Expense[];
@@ -30,6 +31,7 @@ const Expenses: FC<ExpensesProps> = ({ expenses }) => {
         selectedYear={filterYear}
         handleFilterYearChange={handleFilterYearChange}
       />
+      <Chart yearlyExpenses={filteredExpenses} />
       <ExpenseList expenses={filteredExpenses} />
     </div>
   );
