@@ -2,20 +2,19 @@ import "./AddExpenseForm.styles.css";
 import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
 import { Expense } from "../../../types";
 
-interface AddExpenseForm {
+interface AddExpenseFormProps {
   onSaveExpense(ex: Expense): void;
 }
 
-const AddExpenseForm: FC<AddExpenseForm> = ({
+const AddExpenseForm: FC<AddExpenseFormProps> = ({
   onSaveExpense: addNewExpense,
 }) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
 
-  const maxDate = new Date(
-    `${new Date().getFullYear()}-12-31`
-  ).toLocaleDateString();
+  const minDate = `${new Date().getFullYear() - 1}-01-01`;
+  const maxDate = `${new Date().getFullYear()}-12-31`;
 
   const handleTitleChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
@@ -71,7 +70,7 @@ const AddExpenseForm: FC<AddExpenseForm> = ({
           <input
             type="date"
             name="date"
-            min="2019-01-01"
+            min={minDate}
             max={maxDate}
             value={date}
             onChange={handleDateChange}

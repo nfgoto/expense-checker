@@ -1,0 +1,10 @@
+.expense-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.expense-filter__label {
+  color: white;
+  font-weight: bold;
+}
