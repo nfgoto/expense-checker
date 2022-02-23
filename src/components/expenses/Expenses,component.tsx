@@ -1,19 +1,22 @@
-import "./ExpenseList.styles.css";
+import "./Expenses.styles.css";
 import { ChangeEventHandler, FC, useState } from "react";
-import ExpenseItem from "../expensse-item/ExpenceItem.component";
-import { Expense } from "../../../types";
-import ExpenseFilter from "../expense-filter/ExpenseFilter.component";
+import ExpenseFilter from "./expense-filter/ExpenseFilter.component";
+import ExpenseList from "./expense-list/ExpenseList.component";
+import { Expense } from "../../types";
 
-interface ExpenseListProps {
+interface ExpensesProps {
   expenses: Expense[];
 }
 
-const ExpenseList: FC<ExpenseListProps> = ({ expenses }) => {
+const Expenses: FC<ExpensesProps> = ({ expenses }) => {
   const [filterYear, setFilterYear] = useState(
     new Date().getFullYear().toString()
   );
   let years = expenses.map((exp) => exp.date.getFullYear());
   years = Array.from(new Set(years));
+  const filteredExpenses = expenses.filter(
+    (ex) => ex.date.getFullYear().toString() === filterYear
+  );
 
   const handleFilterYearChange: ChangeEventHandler<HTMLSelectElement> = ({
     target: { value },
@@ -21,18 +24,15 @@ const ExpenseList: FC<ExpenseListProps> = ({ expenses }) => {
 
   return (
     <div className="expenses">
+      {" "}
       <ExpenseFilter
         years={years}
         selectedYear={filterYear}
         handleFilterYearChange={handleFilterYearChange}
-      />{" "}
-      {expenses
-        .filter((ex) => ex.date.getFullYear().toString() === filterYear)
-        .map(({ id, ...expenseProps }, index) => (
-          <ExpenseItem key={id ?? index} {...expenseProps} />
-        ))}
+      />
+      <ExpenseList expenses={filteredExpenses} />
     </div>
   );
 };
 
-export default ExpenseList;
+export default Expenses;
