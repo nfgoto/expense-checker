@@ -15,6 +15,7 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
   const [isTitleValid, setIsTitleValid] = useState(false);
   const [isAmountValid, setIsAmountValid] = useState(false);
   const [isDateValid, setIsDateValid] = useState(false);
+  const isFormValid = !isTitleValid || !isAmountValid || !isDateValid;
 
   const minDate = `${new Date().getFullYear() - 1}-01-01`;
   const maxDate = `${new Date().getFullYear()}-12-31`;
@@ -23,7 +24,7 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
     target: { value },
   }) =>
     setTitle((_) => {
-      setIsTitleValid(!!value);
+      setIsTitleValid(!!value.trim());
       return value;
     });
 
@@ -69,6 +70,7 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
             name="title"
             value={title}
             onChange={handleTitleChange}
+            maxLength={255}
           />
         </div>
         <div className={styles["add-expense__control"]}>
@@ -78,6 +80,9 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
             name="amount"
             value={amount}
             onChange={handleAmountChange}
+            min={1}
+            max={99999}
+            step="any"
           />
         </div>
         <div className={styles["add-expense__control"]}>
@@ -93,9 +98,7 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
         </div>
       </div>
       <div className={styles["add-expense__actions"]}>
-        <button disabled={!isTitleValid || !isAmountValid || !isDateValid}>
-          Add Expense
-        </button>
+        <button disabled={isFormValid}>Add Expense</button>
       </div>
     </form>
   );
