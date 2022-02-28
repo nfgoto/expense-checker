@@ -1,7 +1,7 @@
-import "./ExpenseList.styles.css";
 import { FC } from "react";
 import ExpenseItem from "../expensse-item/ExpenceItem.component";
 import { Expense } from "../../../types";
+import styles from "./ExpenseList.styles.module.css";
 
 interface ExpenseListProps {
   expenses: Expense[];
@@ -9,14 +9,16 @@ interface ExpenseListProps {
 
 const ExpenseList: FC<ExpenseListProps> = ({ expenses }) => {
   if (!expenses.length) {
-    return <h2 className="expense-list__fallback">No expenses found</h2>;
+    return (
+      <h2 className={styles["expense-list__fallback"]}>No expenses found</h2>
+    );
   }
 
   const expensesContent = expenses.map(({ id, ...expenseProps }, index) => (
     <ExpenseItem key={id ?? index} {...expenseProps} />
   ));
 
-  return <ul className="expense-list">{expensesContent}</ul>;
+  return <ul className={styles["expense-list"]}>{expensesContent}</ul>;
 };
 
 export default ExpenseList;

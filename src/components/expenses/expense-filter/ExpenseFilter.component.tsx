@@ -1,5 +1,5 @@
-import "./ExpenseFilter.styles.css";
 import { ChangeEventHandler, FC } from "react";
+import styles from "./ExpenseFilter.styles.module.css";
 
 interface ExpenseFilterProps {
   selectedYear: string;
@@ -12,14 +12,14 @@ const ExpenseFilter: FC<ExpenseFilterProps> = ({
   handleFilterYearChange,
   years,
 }) => (
-  <div className="expense-filter">
-    <div className="expense-filter__control">
+  <div className={styles["expense-filter"]}>
+    <div className={styles["expense-filter__control"]}>
       <label htmlFor="filter-year">Filter per Year:&nbsp;</label>
       <select
         name="filter-year"
         value={selectedYear}
         onChange={handleFilterYearChange}
-        className="expense-filter__control"
+        className={styles["expense-filter__control"]}
       >
         {years.map((year) => (
           <option key={year} value={year}>

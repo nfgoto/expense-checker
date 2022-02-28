@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Expense } from "../../types";
 import CharBarList from "./chart-bar-list/CharBarList.component";
-import "./Chart.styles.css";
+import styles from "./Chart.styles.module.css";
 
 interface ChartProps {
   yearlyExpenses: Expense[];
@@ -30,7 +30,7 @@ const Chart: FC<ChartProps> = ({ yearlyExpenses }) => {
   });
 
   return (
-    <div className="chart">
+    <div className={styles.chart}>
       <CharBarList dataPoints={dataPoints} />
     </div>
   );

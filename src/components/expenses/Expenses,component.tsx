@@ -1,7 +1,7 @@
-import "./Expenses.styles.css";
 import { ChangeEventHandler, FC, useState } from "react";
 import ExpenseFilter from "./expense-filter/ExpenseFilter.component";
 import ExpenseList from "./expense-list/ExpenseList.component";
+import styles from "./Expenses.styles.module.css";
 import { Expense } from "../../types";
 import Chart from "../chart/Chart.component";
 
@@ -24,7 +24,7 @@ const Expenses: FC<ExpensesProps> = ({ expenses }) => {
   }) => setFilterYear(value);
 
   return (
-    <div className="expenses">
+    <div className={styles.expenses}>
       {" "}
       <ExpenseFilter
         years={years}

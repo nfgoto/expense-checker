@@ -1,5 +1,5 @@
-import "./AddExpenseForm.styles.css";
 import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
+import styles from "./AddExpenseForm.styles.module.css";
 import { Expense } from "../../../types";
 
 interface AddExpenseFormProps {
@@ -46,8 +46,8 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="add-expense__controls">
-        <div className="add-expense__control">
+      <div className={styles["add-expense__controls"]}>
+        <div className={styles["add-expense__control"]}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -56,7 +56,7 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
             onChange={handleTitleChange}
           />
         </div>
-        <div className="add-expense__control">
+        <div className={styles["add-expense__control"]}>
           <label htmlFor="amount">Amount</label>
           <input
             type="number"
@@ -65,7 +65,7 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
             onChange={handleAmountChange}
           />
         </div>
-        <div className="add-expense__control">
+        <div className={styles["add-expense__control"]}>
           <label htmlFor="date">Date</label>
           <input
             type="date"
@@ -77,7 +77,7 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
           />
         </div>
       </div>
-      <div className="add-expense__actions">
+      <div className={styles["add-expense__actions"]}>
         <button>Add Expense</button>
       </div>
     </form>

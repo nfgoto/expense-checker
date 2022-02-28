@@ -1,5 +1,5 @@
-import "./ChartBarList.styles.css";
 import { FC } from "react";
+import styles from "./ChartBarList.styles.module.css";
 import { DataPoint } from "../../../types";
 import ChartBar from "../chart-bar/ChartBar.component";
 
@@ -10,7 +10,7 @@ interface CharBarListProps {
 const CharBarList: FC<CharBarListProps> = ({ dataPoints }) => {
   const maxValue = Math.max(...dataPoints.map(({ value }) => value));
   return (
-    <div className="chart-bar-list">
+    <div className={styles["chart-bar-list"]}>
       {" "}
       {dataPoints.map(({ value, label }) => (
         <ChartBar key={label} value={value} maxValue={maxValue} label={label} />

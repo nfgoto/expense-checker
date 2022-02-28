@@ -20,6 +20,15 @@
   margin-right: 1rem;
 }
 
+.add-expense button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.add-expense button:disabled:hover {
+  background-color: black;
+}
+
 .add-expense button:hover,
 .add-expense button:active {
   background-color: #510674;

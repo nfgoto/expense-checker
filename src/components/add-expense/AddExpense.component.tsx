@@ -1,5 +1,5 @@
-import "./AddExpense.styles.css";
 import { Dispatch, FC, SetStateAction, useState } from "react";
+import styles from "./AddExpense.styles.module.css";
 import AddExpenseForm from "./add-expense-form/AddExpenseForm.compponent";
 import { Expense } from "../../types";
 
@@ -18,7 +18,7 @@ const AddExpense: FC<AddExpenseProps> = ({ setExpenses }) => {
   const handleClick = () => setDisplayForm(true);
 
   return (
-    <div className="add-expense">
+    <div className={styles["add-expense"]}>
       {!displayForm && <button onClick={handleClick}>Add New Expense</button>}
       {displayForm && <AddExpenseForm onSaveExpense={addNewExpense} />}
     </div>

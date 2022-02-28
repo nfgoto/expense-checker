@@ -1,7 +1,7 @@
-import "./ExpenceItem.styles.css";
 import { FC } from "react";
 import ExpenseDate from "../expense-date/ExpenseDate.components";
 import Card from "../../UI/card/Card.component";
+import styles from "./ExpenceItem.styles.module.css";
 
 interface ExpenseItemProps {
   date: Date;
@@ -12,11 +12,11 @@ interface ExpenseItemProps {
 const ExpenseItem: FC<ExpenseItemProps> = ({ date, title, amount }) => {
   return (
     <li>
-      <Card className="expense-item">
+      <Card className={styles["expense-item"]}>
         <ExpenseDate date={date} />
-        <div className="expense-item__description">
+        <div className={styles["expense-item__description"]}>
           <h2>{title}</h2>
-          <div className="expense-item__price">${amount}</div>
+          <div className={styles["expense-item__price"]}>${amount}</div>
         </div>
       </Card>
     </li>

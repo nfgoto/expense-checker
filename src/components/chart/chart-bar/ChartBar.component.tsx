@@ -1,5 +1,5 @@
-import "./ChartBar.styles.css";
 import { FC } from "react";
+import styles from "./ChartBar.styles.module.css";
 
 interface ChartBarProps {
   value: any;
@@ -14,14 +14,14 @@ const ChartBar: FC<ChartBarProps> = ({ label, maxValue, value }) => {
     barFillHeight = `${Math.round((value / maxValue) * 100)}%`;
   }
   return (
-    <div className="chart-bar">
-      <div className="chart-bar__inner">
+    <div className={styles["chart-bar"]}>
+      <div className={styles["chart-bar__inner"]}>
         <div
-          className="chart-bar__fill"
+          className={styles["chart-bar__fill"]}
           style={{ height: barFillHeight }}
         ></div>
       </div>
-      <div className="chart-bar__label">{label}</div>
+      <div className={styles["chart-bar__label"]}>{label}</div>
     </div>
   );
 };
