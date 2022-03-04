@@ -1,4 +1,11 @@
-import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
+import {
+  ChangeEventHandler,
+  FC,
+  FormEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styles from "./AddExpenseForm.styles.module.css";
 import { Expense } from "../../../types";
 
@@ -16,6 +23,7 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
   const [isAmountValid, setIsAmountValid] = useState(false);
   const [isDateValid, setIsDateValid] = useState(false);
   const isFormValid = !isTitleValid || !isAmountValid || !isDateValid;
+  const titleRef = useRef<HTMLInputElement | null>(null);
 
   const minDate = `${new Date().getFullYear() - 1}-01-01`;
   const maxDate = `${new Date().getFullYear()}-12-31`;
@@ -60,6 +68,10 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
     setDate("");
   };
 
+  useEffect(() => {
+    titleRef.current?.focus();
+  }, []);
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles["add-expense__controls"]}>
@@ -71,6 +83,7 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
             value={title}
             onChange={handleTitleChange}
             maxLength={255}
+            ref={titleRef}
           />
         </div>
         <div className={styles["add-expense__control"]}>

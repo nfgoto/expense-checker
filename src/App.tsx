@@ -13,10 +13,10 @@ function App() {
     ].sort((a, b) => b.date.getTime() - a.date.getTime())
   );
   return (
-    <div>
+    <>
       <AddExpense setExpenses={setExpenses} />
       <Expenses expenses={expenses} />
-    </div>
+    </>
   );
 }
 
