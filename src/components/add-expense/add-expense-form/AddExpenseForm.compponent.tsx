@@ -29,9 +29,16 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
   const maxDate = `${new Date().getFullYear()}-12-31`;
 
   useEffect(() => {
-    setIsTitleValid(!!title.trim());
-    setIsAmountValid(+amount > 0);
-    setIsDateValid(!!date);
+    // debounce
+    const timer = setTimeout(() => {
+      setIsTitleValid(!!title.trim());
+      setIsAmountValid(+amount > 0);
+      setIsDateValid(!!date);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [title, amount, date]);
 
   const handleTitleChange: ChangeEventHandler<HTMLInputElement> = ({
