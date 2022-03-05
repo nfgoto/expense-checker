@@ -28,29 +28,23 @@ const AddExpenseForm: FC<AddExpenseFormProps> = ({
   const minDate = `${new Date().getFullYear() - 1}-01-01`;
   const maxDate = `${new Date().getFullYear()}-12-31`;
 
+  useEffect(() => {
+    setIsTitleValid(!!title.trim());
+    setIsAmountValid(+amount > 0);
+    setIsDateValid(!!date);
+  }, [title, amount, date]);
+
   const handleTitleChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
-  }) =>
-    setTitle((_) => {
-      setIsTitleValid(!!value.trim());
-      return value;
-    });
+  }) => setTitle(value);
 
   const handleAmountChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
-  }) =>
-    setAmount((_) => {
-      setIsAmountValid(+value > 0);
-      return value;
-    });
+  }) => setAmount(value);
 
   const handleDateChange: ChangeEventHandler<HTMLInputElement> = ({
     target: { value },
-  }) =>
-    setDate((_) => {
-      setIsDateValid(!!value);
-      return value;
-    });
+  }) => setDate(value);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
